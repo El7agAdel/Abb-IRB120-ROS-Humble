@@ -106,11 +106,11 @@ def generate_launch_description():
     )
     
     # ---- Controllers
-    joint_state_broadcaster_spawner = Node(
+    arm_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
         arguments=[
-            'joint_state_broadcaster',
+            'arm_broadcaster',
             '--controller-manager', '/controller_manager',
             '--param-file', controllers_file
         ],
@@ -176,11 +176,11 @@ def generate_launch_description():
         gazebo_launch,
         robot_state_publisher,
         spawn,
-        joint_state_broadcaster_spawner,
+        arm_broadcaster_spawner,
         arm_controller_spawner,
         clock_bridge,
         delayed_streamer,
         spawn_camera,
         camera_bridge,
-        # camera_viewer
+        camera_viewer
     ])

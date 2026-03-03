@@ -36,7 +36,6 @@ IRB120/                         # ROS 2 package (ament_python)
   IRB120/
     state_publisher.py
     send_trajectory.py
-    send_trajectory_moveit.py
     send_trajectory_pnp.py
     camera_viewer.py
 
