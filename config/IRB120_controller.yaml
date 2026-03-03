@@ -1,0 +1,52 @@
+# IRB120/config/controllers.yaml
+#
+# Works with gz_ros2_control (Gazebo Fortress / Garden+) and ROS 2 Humble+.
+# URDF provides position command + position/velocity state for joints.
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz; controller_manager update rate
+
+    # --- Controllers to load ---
+    arm_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+
+# --- Joint Trajectory Controller (position control) ---
+arm_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+
+
+# --- Joint Trajectory Controller (position control) ---
+gripper_controller:
+  ros__parameters:
+    joints:
+      # - abb_hand_joint
+      - gripper_finger_joint1
+      - gripper_finger_joint2
+
+
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
