@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/7be2e988-1a90-4dac-a510-cddd4ce037b5
 
 
 
-## Repo layout (as in this zip)
+## Repo layout 
 
 ```
 IRB120/                         # ROS 2 package (ament_python)
