@@ -11,9 +11,12 @@ This repository contains a **ROS 2 simulation + MoveIt 2 planning setup** for th
 
 ## Demo video
 
-[YouTube: IRB120 ROS 2 + Gazebo + MoveIt demo](https://youtu.be/5liWwQx0vOA)
-
+https://github.com/user-attachments/assets/e5eb057e-8b84-4c72-8c68-88a2e95a0e2d
 ---
+
+
+
+
 
 ## Repo layout (as in this zip)
 
