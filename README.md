@@ -389,21 +389,9 @@ ros2 run IRB120 send_trajectory_pnp --ros-args \
 - The `IRB120_green_cube.sdf` cube pose/size may not match the default `cube_xyz` used in `pnp.launch.py`, so you may need to retune `cube_xyz`, approach heights, and tolerances.
 - The robot can fail MoveIt planning due to reachability, collision, or constraints.
 
-2) **Controller naming mismatch**
-- YAML defines `arm_broadcaster` but launch files spawn `joint_state_broadcaster`.
-
-3) **`gazebo.launch.py` has args not fully wired**
+2) **`gazebo.launch.py` has args not fully wired**
 - `world:=...` is declared but currently not respected (world path is hard-coded in the file).
 - `view_camera:=true` is declared, but the `camera_viewer` node is currently commented out in the `LaunchDescription` list.
-
-4) **/clock bridge syntax differs between launch files**
-- `gazebo.launch.py` uses the common bracket form: `...Clock[gz.msgs.Clock]`
-- `moveit.launch.py` and `pnp.launch.py` currently use `...Clock@gz.msgs.Clock` (may break /clock bridging depending on ros_gz_bridge version).
-
-5) **URDF plugin uses a relative controller YAML path**
-- In `IRB120.urdf.xml`, the gz_ros2_control plugin references:
-  `./IRB120/config/IRB120_controller.yaml`
-  which may not resolve when running from a different working directory.
 
 ---
 
@@ -439,16 +427,11 @@ ros2 run IRB120 send_trajectory_pnp --ros-args \
   ```bash
   ros2 topic echo /clock
   ```
-- If it’s missing in `moveit.launch.py` / `pnp.launch.py`, update the bridge string to the bracket form:
-  ```
-  /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock]
-  ```
+
 
 ---
 
 ## Next steps (recommended improvements)
-
-- Fix the YAML/launch controller name mismatch.
 - Wire `world:=...` and re-enable `camera_viewer` auto-start option in `gazebo.launch.py`.
 - Add the camera rig to `moveit.launch.py` / `pnp.launch.py` or provide a dedicated `camera.launch.py`.
 - Make pick & place less clunky by:
